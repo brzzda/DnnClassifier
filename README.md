@@ -17,5 +17,6 @@ There are 2, optionally 3 arguments expected:
 3. If the "-s" flag is used the last argument is either full path to the json file that is used as input or only the json file name if it is located in the "data_json" folder located in the original data folder (which is passed as the first argument).
 
 # Examples of usage
-python dnn_classifier.py "[path_to_the_data_folder]" -l
+python dnn_classifier.py "[path_to_the_data_folder]" -l 
+
 python dnn_classifier.py "[path_to_the_data_folder]" -s "[json_file_name]"
