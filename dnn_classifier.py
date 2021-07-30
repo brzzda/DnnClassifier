@@ -38,7 +38,7 @@ def load_json(file_path, raise_exception=True, verbose=False):
 def load_dnn_classifier(feature_columns, model_path_dir):
     dnn_classifier = tf.estimator.DNNClassifier(
         feature_columns=feature_columns,
-        hidden_units=[50, 30],
+        hidden_units=[40, 20],
         # dropout=0.1,
         model_dir=model_path_dir,
         n_classes=2
@@ -123,7 +123,8 @@ class DnnClassifier:
         for polygon_data in json_file['polygon_objects']:
             cn = polygon_data['class_name']
             # if cn in result and polygon_data['class_score'] > 0.7:
-            if cn in result:
+            if cn in result and polygon_data['class_score'] > 0.7:
+            # if cn in result:
                 # counts[cn] += 1
                 # result[cn] += polygon_data['class_score']
                 result[cn] += 1
@@ -208,6 +209,7 @@ if __name__ == '__main__':
         main.prepare_data()
         main.create_dnn_classifier()
         main.train_dnn_classifier()
+        main.predict_dnn()
     elif sys.argv[2] == "-e":
         main.load_data(only_testing=True)
         main.prepare_data()
